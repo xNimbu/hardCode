@@ -18,10 +18,12 @@ export class VistaComponent {
   }
 
   // Datos tabla Simple
+  columnasDatos = ['id', 'nombre', 'email', 'telefono'];
+  // Datos para la tabla simple
   listaDatos = [
-    { id: 1, nombre: 'Juan', email: 'juan@example.com' },
-    { id: 2, nombre: 'María', email: 'maria@example.com' },
-    { id: 3, nombre: 'Carlos', email: 'carlos@example.com' }
+    { id: 1, nombre: 'Juan', email: 'juan@example.com', telefono: '123456789' },
+    { id: 2, nombre: 'María', email: 'maria@example.com', telefono: '987654321' },
+    { id: 3, nombre: 'Carlos', email: 'carlos@example.com', telefono: '456789123' },
   ];
 
   // Datos tabla Expandible
