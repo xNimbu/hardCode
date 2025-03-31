@@ -11,6 +11,7 @@ import { ModalComponent } from "../components/modal/modal.component";
   styleUrl: './vista.component.scss'
 })
 export class VistaComponent {
+  titulo='Vista de ejemplo';
 
   // Funcion Boton
   accion() {

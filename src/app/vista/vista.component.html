@@ -1,26 +1,38 @@
 <div class="container py-5">
-    <!-- Botón -->
-    <h1>Botón</h1>
-    <div class="d-flex justify-content-center">
-        <app-boton texto="Clic aquí" (clickBoton)="accion()"></app-boton>
-    </div>
+  <!-- Botón -->
+  <h1>Botón</h1>
+  <div class="d-flex justify-content-center">
+    <app-boton texto="Clic aquí" (clickBoton)="accion()"></app-boton>
+  </div>
 
-    <!-- Tabla -->
-    <h1>Tabla Simple</h1>
-    <app-tabla [datos]="listaDatos" [columnas]="columnasDatos"></app-tabla>
+  <!-- Tabla -->
+  <h1>Tabla Simple</h1>
+  <app-tabla [datos]="listaDatos" [columnas]="columnasDatos"></app-tabla>
 
-    <!-- Tabla con escalas -->
-    <h1>Tabla con escalas</h1>
-    <app-tabla-expandible [data]="nivel1Data" [columns]="nivel1Columns" [childColumns]="nivel2Columns"></app-tabla-expandible>
+  <!-- Tabla con escalas -->
+  <h1>Tabla con escalas</h1>
+  <app-tabla-expandible [data]="nivel1Data" [columns]="nivel1Columns"
+    [childColumns]="nivel2Columns"></app-tabla-expandible>
 
-    <!-- Modal -->
-    <h1>Modal</h1>
-    <app-boton texto="Abrir Modal" (clickBoton)="openModal()"></app-boton>
+  <!-- Modal -->
+  <h1>Modal</h1>
+  <app-boton texto="Abrir Modal" (clickBoton)="openModal()"></app-boton>
 
-    <app-modal [isOpen]="isModalOpen" title="Mi Modal Reutilizable" (closeModal)="closeModal()">
-      <!-- Contenido personalizado del modal -->
-      <p>Este es el contenido del modal, el cual puedes personalizar según tus necesidades.</p>
-    </app-modal>
-    
-
+  <app-modal [isOpen]="isModalOpen" title="titulo" (closeModal)="closeModal()">
+    <form>
+      <div class="mb-3">
+        <label for="name" class="form-label">Nombre</label>
+        <input type="text" id="name" class="form-control" name="name" ngModel required>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Correo Electrónico</label>
+        <input type="email" id="email" class="form-control" name="email" ngModel required>
+      </div>
+      <div class="mb-3">
+        <label for="message" class="form-label">Mensaje</label>
+        <textarea id="message" class="form-control" name="message" rows="4" ngModel required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+  </app-modal>
 </div>
