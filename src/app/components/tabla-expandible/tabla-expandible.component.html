@@ -1,41 +1,34 @@
 <table class="table table-bordered">
-    <thead>
-      <tr>
-        <!-- Itera sobre las columnas definidas para el nivel actual -->
-        <th *ngFor="let col of columns">{{ col | titlecase }}</th>
-        <!-- Se agrega columna de acciones si se esperan datos hijos -->
-        <th *ngIf="childColumns">Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let row of data; let i = index">
-        <!-- Muestra los valores de cada columna -->
-        <td *ngFor="let col of columns">{{ row[col] }}</td>
-        <!-- Botón de expansión si existen datos hijos -->
-        <td *ngIf="childColumns">
-          <!-- Se asume que la propiedad que contiene los hijos se llama 'children' -->
-          <button
-            class="btn btn-sm btn-primary"
-            *ngIf="row.children"
-            (click)="toggleExpand(i)">
-            {{ expanded[i] ? 'Ocultar' : 'Expandir' }}
-          </button>
-        </td>
-      </tr>
-  
-      <!-- Fila para mostrar la subtabla cuando la fila está expandida -->
-      <tr *ngFor="let row of data; let i = index" [hidden]="!expanded[i]">
-        <td [attr.colspan]="columns.length + 1">
-          <!-- Se renderiza el mismo componente de forma recursiva si hay datos hijos -->
-          <!-- Si en este nivel se espera otra subtabla, se puede pasar otra configuración -->
-          <app-tabla-expandible 
-            *ngIf="row.children && childColumns"
-            [data]="row.children"
-            [columns]="childColumns"
-            [childColumns]="row.childColumns">
-          </app-tabla-expandible>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  
+  <thead>
+    <tr>
+      <!-- Itera sobre las columnas definidas para el nivel actual -->
+      <th *ngFor="let col of columns">{{ col | titlecase }}</th>
+      <!-- Se agrega columna de acciones si se esperan datos hijos -->
+      <th *ngIf="childColumns">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of data; let i = index">
+      <!-- Muestra los valores de cada columna -->
+      <td *ngFor="let col of columns">{{ row[col] }}</td>
+      <!-- Botón de expansión si existen datos hijos -->
+      <td *ngIf="childColumns">
+        <!-- Se asume que la propiedad que contiene los hijos se llama 'children' -->
+        <button class="btn btn-sm btn-primary" *ngIf="row.children" (click)="toggleExpand(i)">
+          {{ expanded[i] ? 'Ocultar' : 'Expandir' }}
+        </button>
+      </td>
+    </tr>
+
+    <!-- Fila para mostrar la subtabla cuando la fila está expandida -->
+    <tr *ngFor="let row of data; let i = index" [hidden]="!expanded[i]">
+      <td [attr.colspan]="columns.length + 1">
+        <!-- Se renderiza el mismo componente de forma recursiva si hay datos hijos -->
+        <!-- Si en este nivel se espera otra subtabla, se puede pasar otra configuración -->
+        <app-tabla-expandible *ngIf="row.children && childColumns" [data]="row.children" [columns]="childColumns"
+          [childColumns]="row.childColumns">
+        </app-tabla-expandible>
+      </td>
+    </tr>
+  </tbody>
+</table>
