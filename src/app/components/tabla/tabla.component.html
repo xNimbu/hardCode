@@ -1,0 +1,30 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <!-- Itera sobre las columnas para crear la cabecera -->
+            @for (columna of columnas; track $index) {
+            <th>
+                {{ columna | titlecase }}
+            </th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Itera sobre cada objeto de datos -->
+        @for (fila of datos; track $index) {
+        <tr>
+            <!-- Por cada columna, muestra el valor correspondiente -->
+            @for (columna of columnas; track $index) {
+            <td>
+                {{ fila[columna] }}
+            </td>
+            }
+        </tr>
+        }@empty {
+        <tr>
+            <td>
+                No hay datos
+            </td>
+        </tr>}
+    </tbody>
+</table>

@@ -1,0 +1,23 @@
+<div class="modal fade" [class.show]="isOpen" [style.display]="isOpen ? 'block' : 'none'" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <!-- Cabecera del modal -->
+            <div class="modal-header">
+                <h5 class="modal-title">{{ title }}</h5>
+                <app-boton texto="x" (clickBoton)="onClose()"></app-boton>
+
+                <!-- <button type="button" class="close" (click)="onClose()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button> -->
+            </div>
+            <!-- Cuerpo del modal, se inyecta contenido dinámico -->
+            <div class="modal-body">
+                <ng-content></ng-content>
+            </div>
+            <!-- Pie del modal -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="onClose()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
